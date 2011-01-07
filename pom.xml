@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>elekto</groupId>
-    <artifactId>parent</artifactId>
+    <artifactId>elekto-parent</artifactId>
     <version>1.0-SNAPSHOT</version>
 
     <name>${project.groupId}-${project.artifactId}</name>
@@ -462,11 +462,6 @@
                 <groupId>commons-fileupload</groupId>
                 <artifactId>commons-fileupload</artifactId>
                 <version>1.2.2</version>
-            </dependency>
-            <dependency>
-                <groupId>com.google.collections</groupId>
-                <artifactId>google-collections</artifactId>
-                <version>1.0</version>
             </dependency>
             <dependency>
                 <groupId>com.google.guava</groupId>

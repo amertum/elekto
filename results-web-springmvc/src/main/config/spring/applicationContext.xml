@@ -19,6 +19,6 @@
 
     <bean id="operationLoader" class="elekto.results.dao.xls.OperationLoader" />
 
-    <bean id="cedpResultor" class="elekto.results.model.CedpResultor" />
+    <bean id="cerfaDocumentFactory" class="elekto.results.cerfa.core.CerfaDocumentFactory" />
 
 </beans>

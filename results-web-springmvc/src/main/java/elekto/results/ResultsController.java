@@ -18,9 +18,6 @@
 
 package elekto.results;
 
-import static org.springframework.web.bind.annotation.RequestMethod.GET;
-import static org.springframework.web.bind.annotation.RequestMethod.POST;
-
 import java.io.IOException;
 
 import javax.servlet.http.HttpServletResponse;
@@ -35,33 +32,32 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.servlet.ModelAndView;
 
-import elekto.results.cerfa.core.CerfaDocumentFactory;
-import elekto.results.dao.xls.OperationLoader;
-import elekto.results.model.Resultor;
+import static org.springframework.web.bind.annotation.RequestMethod.GET;
+import static org.springframework.web.bind.annotation.RequestMethod.POST;
 
 /**
  */
 @Controller
 @SessionAttributes(ResultsController.MODEL_ATTRIBUTE_RESULTS_INPUTS)
 public class ResultsController {
-
+    
     ResultsController(
-            final OperationLoader operationLoader,
-            final Resultor resultor,
-            final CerfaDocumentFactory cerfaDocumentFactory)
+            final ResultsProviderFactory resultsProviderFactory)
     {
-        this.operationLoader = operationLoader;
-        this.resultor = resultor;
-        this.cerfaDocumentFactory = cerfaDocumentFactory;
+        if (resultsProviderFactory == null) {
+            throw new IllegalArgumentException("resultsProviderFactory must not be null");
+        }
+        
+        this.resultsProviderFactory = resultsProviderFactory;
     }
-
+    
 
     @ModelAttribute(MODEL_ATTRIBUTE_RESULTS_INPUTS)
     public ResultsInputsForm populateResultsInputsForm()
     {
         return new ResultsInputsForm();
     }
-
+    
 
     @RequestMapping(value = "/calculate", method = GET)
     public ModelAndView main(
@@ -69,34 +65,35 @@ public class ResultsController {
             final ResultsInputsForm resultsInputsForm,
             final BindingResult errors,
             final SessionStatus status)
+        throws IOException
     {
         final ModelAndView modelAndView = new ModelAndView("calculate");
-
+        
         new ResultInputsValidator().validate(resultsInputsForm, errors);
         if (errors.hasErrors()) {
             LOGGER.warn("errors: {}", errors);
         }
-        modelAndView.addObject("operation", resultsInputsForm.getOperation());
-
+        if (resultsInputsForm.hasCachedElectionsModelData()) {
+            final ResultsProvider resultsProvider = this.resultsProviderFactory.create(resultsInputsForm.getCachedElectionsModelData());
+            modelAndView.addObject("resultsProvider", resultsProvider);
+        }
+        
         status.setComplete();
-
+        
         return modelAndView;
     }
-
+    
 
     /**
      * Upload the candidats model excel file.
      * 
      * @param resultsInputsForm
-     * 
-     * @param electionsModelFile
-     *        the candidats model excel file.
      * @param errors
      * 
      * @return the redirect view.
      * 
      * @throws IOException
-     *         if unable to read the file.
+     *             if unable to read the file.
      */
     @RequestMapping(value = "/calculate", method = POST)
     public ModelAndView calculateResults(
@@ -108,30 +105,24 @@ public class ResultsController {
         new ResultInputsValidator().validate(resultsInputsForm, errors);
         if (errors.hasErrors()) {
             LOGGER.error("errors: {}", errors);
-
+            
             return new ModelAndView("redirect:calculate");
         }
-
-        //final Operation operation = this.operationLoader.loadOperation(resultsInputs.getElectionsModelFile().getInputStream());
-        //operation.calculateResults(this.resultor);
-        //resultsInputs.setOperation(operation);
-
-        //        final OutputStream outputStream = new FileOutputStream(
-        //                "elekto-acme-elections-resultats-2010-cerfa-ce-titulaires-college-etablissement.pdf");
-        //        this.cerfaDocumentFactory.create(operation, outputStream);
-
+        
+        resultsInputsForm.cacheElectionsModelData();
+        
         return new ModelAndView("redirect:calculate");
     }
-
+    
 
     @RequestMapping(value = "/help", method = GET)
     public ModelAndView modelHelp()
     {
         final ModelAndView modelAndView = new ModelAndView("help");
-
+        
         return modelAndView;
     }
-
+    
 
     @RequestMapping(value = "/elections-model.xls", method = GET)
     public ModelAndView modeleExcelFile(
@@ -139,21 +130,22 @@ public class ResultsController {
         throws IOException
     {
         final ModelAndView modelAndView = new ModelAndView("classpathResourceView");
-        modelAndView.addObject(ClasspathResourceView.CONTENT_TYPE_MODEL_KEY, "application/vnd.ms-excel");
-        modelAndView.addObject(ClasspathResourceView.CLASSPATH_RESOURCE_MODEL_KEY, "/elections-template.xls");
+        modelAndView.addObject(
+                ClasspathResourceView.CONTENT_TYPE_MODEL_KEY,
+                "application/vnd.ms-excel");
+        modelAndView.addObject(
+                ClasspathResourceView.CLASSPATH_RESOURCE_MODEL_KEY,
+                "/elections-template.xls");
         return modelAndView;
     }
+    
 
     private static final Logger LOGGER = LoggerFactory.getLogger(ResultsController.class);
-
-    private final OperationLoader operationLoader;
-
-    private final Resultor resultor;
-
-    private final CerfaDocumentFactory cerfaDocumentFactory;
-
+    
+    private final ResultsProviderFactory resultsProviderFactory;
+    
     static final String MODEL_ATTRIBUTE_RESULTS_INPUTS = "resultsInputs";
-
+    
     static final String FORM_ATTRIBUTE_ELECTIONS_MODEL_FILE = "electionsModelFile";
-
+    
 }
