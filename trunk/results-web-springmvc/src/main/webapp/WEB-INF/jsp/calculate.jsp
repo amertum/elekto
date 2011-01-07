@@ -81,7 +81,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
             <li>
                 Télécharger les résultats au format PDF Cerfa.
                           
-                <p id="currentTourIndex">currentTourIndex : ${operation.currentTour.index}</p>
+                <p id="currentTourIndex">currentTourIndex : ${resultsProvider.operation.currentTour.index}</p>
                 
                 <ul>
                     <li>

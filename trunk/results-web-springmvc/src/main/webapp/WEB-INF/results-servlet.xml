@@ -42,10 +42,13 @@
     </bean>
     -->
     
-    <bean id="resultsController" class="elekto.results.ResultsController">
+    <bean id="resultsProviderFactory" class="elekto.results.ResultsProviderFactory">
         <constructor-arg index="0" ref="operationLoader" />
-        <constructor-arg index="1" ref="cedpResultor" />
-        <constructor-arg index="2"><null /></constructor-arg>
+        <constructor-arg index="1" ref="cerfaDocumentFactory" />
+    </bean>
+    
+    <bean id="resultsController" class="elekto.results.ResultsController">
+        <constructor-arg index="0" ref="resultsProviderFactory" />
     </bean>
 
 </beans>
