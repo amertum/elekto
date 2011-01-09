@@ -2,6 +2,8 @@ package elekto.results;
 
 import java.io.InputStream;
 
+import com.google.common.io.InputSupplier;
+
 import elekto.results.cerfa.core.CerfaDocumentFactory;
 import elekto.results.dao.xls.OperationLoader;
 
