@@ -9,7 +9,7 @@ import elekto.results.cerfa.model.PageNumeroInfos;
 /**
  * Informations sur les numéros de page.
  */
-public class PageNumeroDrawableElement
+class PageNumeroDrawableElement
         implements DrawableElement {
 
     PageNumeroDrawableElement(

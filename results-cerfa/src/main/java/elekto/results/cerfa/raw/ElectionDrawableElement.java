@@ -16,7 +16,7 @@ import elekto.results.cerfa.model.ElectionInfos;
 /**
  * Dessine les informations sur l'élection.
  */
-public class ElectionDrawableElement
+class ElectionDrawableElement
         implements DrawableElement {
 
     ElectionDrawableElement(

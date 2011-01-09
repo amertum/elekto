@@ -27,11 +27,12 @@ import org.apache.pdfbox.pdmodel.PDDocument;
 import com.google.common.base.Joiner;
 
 import elekto.results.cerfa.model.CandidatInfos;
+import elekto.results.cerfa.model.Sexe;
 
 /**
  * Dessine les informations de chaque candidats au premier tour ainsi que leurs résultats.
  */
-public class PremierTourCandidatsDrawableElement
+class PremierTourCandidatsDrawableElement
         extends AbstractTableData
         implements DrawableElement {
 

@@ -1,6 +1,5 @@
 package elekto.results.cerfa.model;
 
-import elekto.results.cerfa.raw.Sexe;
 
 /**
  * Informations de chaque candidats ainsi que leurs résultats.

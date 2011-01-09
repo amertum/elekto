@@ -22,7 +22,7 @@ import elekto.results.cerfa.model.TourResultatsInfos;
 /**
  * Dessine les informations sur les résultats de l'élection au second tour.
  */
-public class SecondTourResultatsDrawableElement
+class SecondTourResultatsDrawableElement
         extends PremierTourResultatsDrawableElement
         implements DrawableElement {
 

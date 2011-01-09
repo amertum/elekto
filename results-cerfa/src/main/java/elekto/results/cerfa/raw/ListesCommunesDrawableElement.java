@@ -20,7 +20,7 @@ import elekto.results.cerfa.model.ListeCommuneInfos;
 /**
  * Dessine les informations sur les listes communes.
  */
-public class ListesCommunesDrawableElement
+class ListesCommunesDrawableElement
         extends AbstractTableData
         implements DrawableElement {
 

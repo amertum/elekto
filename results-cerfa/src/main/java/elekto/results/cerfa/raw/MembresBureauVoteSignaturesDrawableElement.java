@@ -16,7 +16,7 @@ import elekto.results.cerfa.model.MembreBureauVoteInfos;
 /**
  * Dessine les informations sur les membres du bureau de vote en vue de leur signature.
  */
-public class MembresBureauVoteSignaturesDrawableElement
+class MembresBureauVoteSignaturesDrawableElement
         extends AbstractTableData
         implements DrawableElement {
 

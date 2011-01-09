@@ -22,8 +22,8 @@ import org.junit.Test;
 import elekto.results.cerfa.model.CandidatInfos;
 import elekto.results.cerfa.model.ListeCommuneInfos;
 import elekto.results.cerfa.model.MembreBureauVoteInfos;
+import elekto.results.cerfa.model.Sexe;
 import elekto.results.cerfa.raw.RawCerfaDocument;
-import elekto.results.cerfa.raw.Sexe;
 
 /**
  * Unit test of {@link RawCerfaDocument}.
