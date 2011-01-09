@@ -30,7 +30,7 @@ import elekto.results.cerfa.model.TourResultatsInfos;
 /**
  * Dessine les informations sur les résultats de l'élection au premier tour.
  */
-public class PremierTourResultatsDrawableElement
+class PremierTourResultatsDrawableElement
         implements DrawableElement {
 
     PremierTourResultatsDrawableElement(

@@ -9,7 +9,7 @@ import elekto.results.cerfa.model.ContactEntrepriseInfos;
 /**
  * Dessine les informations sur la personne à contacter dans l'entreprise.
  */
-public class ContactEntrepriseDrawableElement
+class ContactEntrepriseDrawableElement
         implements DrawableElement {
 
     ContactEntrepriseDrawableElement(

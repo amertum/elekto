@@ -5,7 +5,6 @@ import static com.google.common.collect.Lists.newArrayList;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.util.Collection;
-import java.util.List;
 
 import org.apache.pdfbox.exceptions.COSVisitorException;
 import org.apache.pdfbox.pdmodel.PDDocument;
@@ -26,7 +25,6 @@ public class CompleteCerfaDocument
     public CompleteCerfaDocument(
             final CerfaResource cerfaResource,
             final ElectionModel electionResults)
-        throws IOException
     {
         this.cerfaResource = cerfaResource;
         this.electionModel = electionResults;
@@ -46,7 +44,7 @@ public class CompleteCerfaDocument
         //        }
 
         for (int i = 0; i < 2; i++) {
-            final RawCerfaDocument document = this.makeRawCerfa(this.electionModel, null);
+            final RawCerfaDocument document = this.makeRawCerfa(this.electionModel);
             documents.add(document);
         }
 
@@ -81,8 +79,7 @@ public class CompleteCerfaDocument
 
 
     private RawCerfaDocument makeRawCerfa(
-            final ElectionModel electionModel,
-            final Iterable<List> listes)
+            final ElectionModel electionModel)
         throws IOException
     {
         final RawCerfaDocument document = RawCerfaDocument.makeCerfa(this.cerfaResource);

@@ -1,4 +1,4 @@
-package elekto.results.cerfa.raw;
+package elekto.results.cerfa.model;
 
 /**
  * Enumération des sexes possibles.
