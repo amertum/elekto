@@ -43,7 +43,8 @@ public class CompleteCerfaDocument
         //            }
         //        }
 
-        for (int i = 0; i < 2; i++) {
+        // TODO change MAX to change the number of generated page
+        for (int i = 0; i < 1; i++) {
             final RawCerfaDocument document = this.makeRawCerfa(this.electionModel);
             documents.add(document);
         }

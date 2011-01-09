@@ -14,7 +14,7 @@ import elekto.results.model.Operation;
  * 
  */
 public class ResultsProvider {
-    
+
     public ResultsProvider(
             final OperationLoader operationLoader,
             final CerfaDocumentFactory cerfaDocumentFactory,
@@ -24,33 +24,37 @@ public class ResultsProvider {
         this.cerfaDocumentFactory = cerfaDocumentFactory;
         this.inputStream = inputStream;
     }
-    
+
 
     public HSSFWorkbook getInputResults()
         throws IOException
     {
-        return new HSSFWorkbook(this.inputStream);
+        if (this.workbook == null) {
+            this.workbook = new HSSFWorkbook(this.inputStream);
+        }
+        return this.workbook;
     }
-    
+
 
     public Operation getOperation()
         throws IOException
     {
         return this.operationLoader.loadOperation(this.getInputResults());
     }
-    
+
 
     public CerfaDocument getCerfaDocument()
         throws IOException
     {
         return this.cerfaDocumentFactory.create(this.getOperation());
     }
-    
 
     private final OperationLoader operationLoader;
-    
+
     private final CerfaDocumentFactory cerfaDocumentFactory;
-    
+
     private final InputStream inputStream;
-    
+
+    private HSSFWorkbook workbook;
+
 }
