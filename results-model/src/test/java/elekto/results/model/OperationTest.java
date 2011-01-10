@@ -10,7 +10,7 @@ public class OperationTest {
     @Test
     public void testDummy()
     {
-
+        // do nothing
     }
 
 }

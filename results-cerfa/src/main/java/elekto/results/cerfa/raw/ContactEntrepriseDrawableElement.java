@@ -36,6 +36,7 @@ class ContactEntrepriseDrawableElement
     @Override
     public void prepareText()
     {
+        // do nothing
     }
 
     private final ContactEntrepriseInfos contactEntrepriseInfos;

@@ -156,6 +156,7 @@ public class RawCerfaDocumentTest {
         document.getPremierTourResultats().setQuotientElectoral(211.506f); // should display 211.51
 
         for (int i = 0; i < 21; i++) {
+            // TODO ? final CandidatInfos candidatInfos = document.getPremierTourCandidats().add();
             final CandidatInfos candidatInfos = new CandidatInfos();
 
             candidatInfos.setNom("Palaiseaux");
@@ -181,6 +182,7 @@ public class RawCerfaDocumentTest {
         }
 
         for (int i = 0; i < 8; i++) {
+            // TODO ? final ListeCommuneInfos listeCommune = document.getListesCommunes().add();
             final ListeCommuneInfos listeCommune = new ListeCommuneInfos();
             listeCommune.setNom("CGT-CFDT");
             listeCommune.setOrganisations("CGT", "CFDT");

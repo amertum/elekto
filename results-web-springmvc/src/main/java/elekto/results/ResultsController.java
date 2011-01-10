@@ -129,7 +129,6 @@ public class ResultsController {
     @RequestMapping(value = "/elections-model.xls", method = GET)
     public ModelAndView modeleExcelFile(
             final HttpServletResponse response)
-        throws IOException
     {
         final ModelAndView modelAndView = new ModelAndView("classpathResourceView");
         modelAndView.addObject(ClasspathResourceView.CONTENT_TYPE_MODEL_KEY, "application/vnd.ms-excel");

@@ -55,6 +55,7 @@ class EtablissementDrawableElement
     @Override
     public void prepareText()
     {
+        // do nothing
     }
 
     private final EtablissementInfos etablissement;

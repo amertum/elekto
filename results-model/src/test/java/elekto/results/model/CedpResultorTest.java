@@ -8,6 +8,7 @@ import java.text.ParseException;
 import java.util.Date;
 
 import org.apache.commons.lang.time.DateUtils;
+import org.junit.Ignore;
 import org.junit.Test;
 
 /**
@@ -16,8 +17,11 @@ import org.junit.Test;
 public class CedpResultorTest {
 
     @Test
+    @Ignore
     public final void test()
+        throws Exception
     {
+        makeOperation();
     }
 
 
