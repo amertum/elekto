@@ -93,7 +93,7 @@ public class CompleteCerfaDocumentTest {
         // test
 
         final PDDocument pdDocument = PDDocument.load(new ByteArrayInputStream(outputStream.toByteArray()));
-        assertThat(pdDocument.getNumberOfPages()).isEqualTo(4);
+        assertThat(pdDocument.getNumberOfPages()).isEqualTo(2);
         final PDPage page1 = (PDPage) pdDocument.getDocumentCatalog().getAllPages().get(0);
         assertThat(page1).isNotNull();
         final PDPage page2 = (PDPage) pdDocument.getDocumentCatalog().getAllPages().get(1);

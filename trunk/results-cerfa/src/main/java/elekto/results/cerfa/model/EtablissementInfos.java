@@ -126,7 +126,7 @@ public class EtablissementInfos {
 
     private String siret = "";
 
-    private List<String> autresSiret = nCopies(AUTRES_SIRET_COUNT, "");
+    private List<String> autresSiret = Collections.<String> emptyList();
 
     private String idcc = "";
 

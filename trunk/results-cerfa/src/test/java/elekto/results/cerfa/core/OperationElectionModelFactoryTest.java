@@ -1,11 +1,14 @@
 package elekto.results.cerfa.core;
 
 import static elekto.results.model.Sexe.HOMME;
+import static org.fest.assertions.Assertions.assertThat;
 
 import java.util.Date;
+import java.util.Iterator;
 
 import org.junit.Test;
 
+import elekto.results.cerfa.model.ElectionModel;
 import elekto.results.model.Categorie;
 import elekto.results.model.Operation;
 import elekto.results.model.OperationBuilder;
@@ -21,7 +24,22 @@ public class OperationElectionModelFactoryTest {
     {
         final Operation operation = makeOperation();
         final OperationElectionModelFactory factory = new OperationElectionModelFactory();
-        factory.create(operation);
+        final Iterator<ElectionModel> electionModels = factory.create(operation).iterator();
+
+        {
+            final ElectionModel electionModel = electionModels.next();
+
+            assertThat(electionModel.getEtablissement().getRaisonSociale()).isEqualTo("raison sociale");
+            assertThat(electionModel.getEtablissement().getAdresses()).containsOnly("adresse1", "adresse2");
+            assertThat(electionModel.getEtablissement().getCodePostal()).isEqualTo("code postal");
+            assertThat(electionModel.getEtablissement().getVille()).isEqualTo("ville");
+            assertThat(electionModel.getEtablissement().getSiret()).isEqualTo("siret");
+            assertThat(electionModel.getEtablissement().getAutresSiret()).isEmpty();
+            assertThat(electionModel.getEtablissement().getIdcc()).isEqualTo("idcc");
+        }
+        {
+            final ElectionModel electionModel = electionModels.next();
+        }
     }
 
 
@@ -31,7 +49,6 @@ public class OperationElectionModelFactoryTest {
 // @formatter:off
          final Operation operation = new OperationBuilder()
              .addElection()
-                 // electionBuilder
                  .type(Type.COMITE_ENTREPRISE)
                  .categorie(Categorie.TITULAIRES)
                  .etablissement("raison sociale", "adresse1", "adresse2", "code postal", "ville", "siret", "idcc")
@@ -77,6 +94,9 @@ public class OperationElectionModelFactoryTest {
                          .voixCount(5)
                      .endCandidat()
                  .endListe()
+             .endElection()
+             .addElection()
+                 .etablissement("raison sociale", "adresse1", "adresse2", "code postal", "ville", "siret", "idcc")
              .endElection()
              .toOperation();
 // @formatter:on
