@@ -124,7 +124,16 @@ public class RawCerfaDocument
     }
 
 
-    private void drawGrid(
+    /**
+     * Tool method which helps during development by drawing a grid for knowing where objects where put on PDF.
+     * 
+     * @param pageIndex
+     *        the index of the page to draw the grid on.
+     * 
+     * @throws IOException
+     *         if an error occurs during drawing.
+     */
+    void drawGrid(
             final int pageIndex)
         throws IOException
     {

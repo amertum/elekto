@@ -22,8 +22,8 @@ public class CompleteCerfaDocumentTest {
 
     @Test
     public void testMakeHugeMultiPagesDocument()
-        throws IOException
     {
+        // TODO
     }
 
 
@@ -49,6 +49,9 @@ public class CompleteCerfaDocumentTest {
      *                  Liste
      *                      Candidat
      * </pre>
+     * 
+     * @throws IOException
+     *         if test fails.
      */
     @Test
     public void testMakeMultiPagesDocument()
@@ -104,8 +107,8 @@ public class CompleteCerfaDocumentTest {
 
     @Test
     public void testMakeMultiPagesDocumentWithListeSpaningAcrossMultiPages()
-        throws IOException
     {
+        // TODO
     }
 
 }

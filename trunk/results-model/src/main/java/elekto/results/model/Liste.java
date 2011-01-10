@@ -213,8 +213,6 @@ public class Liste {
 
     private int candidatsVoixCount;
 
-    private int candidatsCount;
-
     private float voixMoyenne;
 
     private float siegesAttribuesQuotient;
