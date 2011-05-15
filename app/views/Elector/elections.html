@@ -1,0 +1,9 @@
+#{extends 'main.html' /}
+#{set title:'Auth' /}
+
+<h2>elections :</h2>
+<ul>
+    #{list items:elections, as:'election' }
+        <li>${election.name}</li>
+    #{/list}
+</ul>
