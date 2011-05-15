@@ -1,0 +1,10 @@
+# playframe tmp directory
+tmp/
+test-result/
+eclipse/
+
+# eclipse files and directories
+.project
+.classpath
+.settings
+
