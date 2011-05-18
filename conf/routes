@@ -10,6 +10,7 @@ POST    /{clientId}/elector/login                               Elector.doLogin
 GET     /{clientId}/elector/logout                              Elector.doLogout
 
 GET     /{clientId}/elector/elections                           Elector.elections
+GET     /{clientId}/elector/elections.{<json>format}            Elector.elections
 POST    /{clientId}/elector/elections/{electionId}/vote         Elector.doVote
 
 GET     /{clientId}/manager/?                                   Manager.index

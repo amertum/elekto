@@ -2,6 +2,12 @@
 
 #{selenium}
     // Open the home page, and check that no error occured
+    clearSession()
     open('/acme')
-    assertNotTitle('Application error')
+    assertTitle('Login')
+        
+    type('username', 'admin')
+    type('password', 'secret')
+    clickAndWait('signin')
+    assertTitle('Elections')
 #{/selenium}

@@ -8,7 +8,6 @@ import play.db.jpa.Model;
 public class Election
         extends Model {
 
-
     public String name;
 
 }
