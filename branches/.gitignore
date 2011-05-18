@@ -1,4 +1,5 @@
 # playframe tmp directory
+logs/
 tmp/
 test-result/
 eclipse/

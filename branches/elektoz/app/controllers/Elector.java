@@ -75,7 +75,12 @@ public class Elector
         System.out.println("elections/clientId:" + clientId);
         final List<Election> elections = Election.findAll();
 
-        render(elections);
+        if (request.format.equals("json")) {
+            renderJSON(elections);
+        }
+        else {
+            render(elections);
+        }
     }
 
 
