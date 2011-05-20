@@ -11,7 +11,7 @@
         #{get 'moreScripts' /}
     </head>
     <body>
-        <a href="@{Elector.doLogout(params.clientId)}">Logout</a>
+        <a href="@{Vote.logout(params.client, params.context)}">Logout</a>
     
         #{doLayout /}
     </body>

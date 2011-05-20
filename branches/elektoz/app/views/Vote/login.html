@@ -1,7 +1,7 @@
 #{extends 'main.html' /}
 #{set title:'Login' /}
 
-#{form @Elector.doLogin(params.clientId)}
+#{form @Vote.signin(params.client, params.context)}
     <div>
       username: <input type="text" name="username" />
    </div>
