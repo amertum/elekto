@@ -2,18 +2,32 @@
 # This file defines all application routes (Higher priority routes first)
 # ~~~~
 
-GET     /{clientId}/?                                           Elector.index
-GET     /{clientId}/elector/?                                   Elector.index
+# https://www.elektoz.com/vote/acme/2011-cedp
 
-GET     /{clientId}/elector/login                               Elector.login
-POST    /{clientId}/elector/login                               Elector.doLogin
-GET     /{clientId}/elector/logout                              Elector.doLogout
+# HTMl URLs
+#  GET  /vote/acme/2011-cedp                    : if NOT authz, redirect to /login
+#                                               : else show elections context, select election, make ballot, vote, show registration (using XHR)
+#  GET  /vote/acme/2011-cedp/login              : show login
+# POST  /vote/acme/2011-cedp/signin             : do login, redirect to /
+#  GET  /vote/acme/2011-cedp?logout             : logout
 
-GET     /{clientId}/elector/elections                           Elector.elections
-GET     /{clientId}/elector/elections.{<json>format}            Elector.elections
-POST    /{clientId}/elector/elections/{electionId}/vote         Elector.doVote
+# JSON URLs
+#  GET  /vote/acme/2011-cedp/elections.json                             : election contexts data {[ce-tit, ce-sup], [dp-tit, dp-sup]}
+# POST  /vote/acme/2011-cedp/elections/{election}/cast                  : do cast vote, redirect to /registration
+#  GET  /vote/acme/2011-cedp/elections/{election}/registration.json     : election registration
 
-GET     /{clientId}/manager/?                                   Manager.index
+# html
+GET     /vote/{client}/{context}/?                                                      Vote.context
+GET     /vote/{client}/{context}/login                                                  Vote.login
+POST    /vote/{client}/{context}/signin                                                 Vote.signin
+GET     /vote/{client}/{context}/logout                                                 Vote.logout
+
+# json
+GET     /vote/{client}/{context}/elections.{<json>format}                               Vote.elections
+POST    /vote/{client}/{context}/elections/{election}/cast                              Vote.cast
+GET     /vote/{client}/{context}/elections/{election}/registration.{<json>format}       Vote.registration
+
+GET     /manager/{client}/?                                                             Manager.home
 
 # Ignore favicon requests
 GET     /favicon.ico                                            404
@@ -22,4 +36,4 @@ GET     /favicon.ico                                            404
 GET     /public/                                                staticDir:public
 
 # Catch all
-*       /{controller}/{action}                                  {controller}.{action}
+# *       /{controller}/{action}                                  {controller}.{action}
