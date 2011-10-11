@@ -6,6 +6,7 @@ import org.apache.commons.lang.builder.EqualsBuilder;
 import org.apache.commons.lang.builder.HashCodeBuilder;
 import org.apache.commons.lang.builder.ToStringBuilder;
 
+import com.google.common.base.Function;
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Iterables;
 
@@ -13,15 +14,23 @@ public class College
         implements ElectionProperty {
 
     College(
-            final Iterable<String> categories)
+            final Denomination denomination,
+            final Iterable<CollegeEnum> categories)
     {
+        this.denomination = denomination;
         this.categories = ImmutableList.copyOf(categories);
     }
 
 
-    public Iterable<String> getCategories()
+    public Iterable<CollegeEnum> getCategories()
     {
         return this.categories;
+    }
+
+
+    public Denomination getDenomination()
+    {
+        return this.denomination;
     }
 
 
@@ -80,6 +89,38 @@ public class College
         return toString;
     }
 
-    private final Iterable<String> categories;
+    public enum Denomination {
+        UNIQUE,
+        PREMIER,
+        DEUXIEME,
+        TROISIEME,
+        AUTRE, ;
+    }
+
+    public enum CollegeEnum {
+        OUVRIERS,
+        EMPLOYES,
+        TECHNICIENS,
+        AGENTS_DE_MAITRISE,
+        INGENIEURS,
+        CADRES,
+        AUTRES, ;
+    }
+
+    public static class CollegeEnumFunction
+            implements Function<String, CollegeEnum> {
+
+        @Override
+        public CollegeEnum apply(
+                final String input)
+        {
+            return CollegeEnum.valueOf(input);
+        }
+
+    }
+
+    private final Denomination denomination;
+
+    private final Iterable<CollegeEnum> categories;
 
 }

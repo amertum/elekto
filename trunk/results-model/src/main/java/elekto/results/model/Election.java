@@ -30,6 +30,7 @@ public class Election {
     }
 
 
+    // TODO rename to getContent more readable and appropriate
     public ElectionKey getKey()
     {
         return this.electionKey;

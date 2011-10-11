@@ -10,6 +10,8 @@ import java.util.Date;
 
 import org.junit.Test;
 
+import elekto.results.model.College.Denomination;
+
 /**
  * Unit test of {@link OperationBuilder}.
  */
@@ -26,7 +28,7 @@ public class OperationBuilderTest {
                 .type(Type.COMITE_ENTREPRISE)
                 .categorie(Categorie.TITULAIRES)
                 .etablissement("raison sociale", "adresse1", "adresse2", "code postal", "ville", "siret", "idcc")
-                .college("Employés", "Cadres")
+                .college(Denomination.UNIQUE, College.CollegeEnum.EMPLOYES, College.CollegeEnum.CADRES)
                 .tour(1, date)
                 .scrutinPrecedentDate(date)
                 .partielle()
@@ -84,7 +86,10 @@ public class OperationBuilderTest {
         assertThat(election.getKey().getEtablissement().getVille()).isEqualTo("ville");
         assertThat(election.getKey().getEtablissement().getSiret()).isEqualTo("siret");
         assertThat(election.getKey().getEtablissement().getIdcc()).isEqualTo("idcc");
-        assertThat(election.getKey().getCollege().getCategories()).containsOnly("Employés", "Cadres");
+        assertThat(election.getKey().getCollege().getDenomination()).isEqualTo(Denomination.UNIQUE);
+        assertThat(election.getKey().getCollege().getCategories()).containsOnly(
+                College.CollegeEnum.EMPLOYES,
+                College.CollegeEnum.CADRES);
         assertThat(election.getKey().getTour().getIndex()).isEqualTo(1);
         assertThat(election.getKey().getTour().getDate()).isEqualTo(date);
 

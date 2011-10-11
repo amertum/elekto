@@ -133,7 +133,7 @@ public class RawCerfaDocumentTest {
         document.getCollege().setCompositionAgentsDeMaitrise(true);
         document.getCollege().setCompositionIngenieurs(true);
         document.getCollege().setCompositionCadres(true);
-        document.getCollege().setCollegeCompositionAutres(true, "Dirigeants" + more, "éèçàù" + more, "Artistes" + more);
+        document.getCollege().setCompositionAutres(true, "Dirigeants" + more, "éèçàù" + more, "Artistes" + more);
 
         // 1er tour
 

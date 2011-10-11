@@ -25,6 +25,7 @@ import com.google.common.collect.Lists;
 
 import elekto.results.model.Candidat;
 import elekto.results.model.Categorie;
+import elekto.results.model.College.CollegeEnum;
 import elekto.results.model.Election;
 import elekto.results.model.Liste;
 import elekto.results.model.Operation;
@@ -88,8 +89,8 @@ public class OperationLoaderTest {
             }
             {
                 final Object[] expected = ((electionIndex) % 2 == 0)
-                        ? Arrays.array("Ouvriers", "Employés")
-                        : Arrays.array("Cadres");
+                        ? Arrays.array(CollegeEnum.OUVRIERS, CollegeEnum.EMPLOYES)
+                        : Arrays.array(CollegeEnum.CADRES);
                 assertThat(election.getKey().getCollege().getCategories()).containsOnly(expected);
             }
 

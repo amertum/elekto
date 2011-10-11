@@ -89,7 +89,7 @@ public class CollegeInfos {
     }
 
 
-    public void setCollegeCompositionAutres(
+    public void setCompositionAutres(
             final boolean autres,
             final String value1,
             final String value2,

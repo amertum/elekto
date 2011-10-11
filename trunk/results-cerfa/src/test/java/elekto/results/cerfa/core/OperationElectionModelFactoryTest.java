@@ -10,6 +10,8 @@ import org.junit.Test;
 
 import elekto.results.cerfa.model.ElectionModel;
 import elekto.results.model.Categorie;
+import elekto.results.model.College.CollegeEnum;
+import elekto.results.model.College.Denomination;
 import elekto.results.model.Operation;
 import elekto.results.model.OperationBuilder;
 import elekto.results.model.Type;
@@ -52,7 +54,7 @@ public class OperationElectionModelFactoryTest {
                  .type(Type.COMITE_ENTREPRISE)
                  .categorie(Categorie.TITULAIRES)
                  .etablissement("raison sociale", "adresse1", "adresse2", "code postal", "ville", "siret", "idcc")
-                 .college("Employés", "Cadres")
+                 .college(Denomination.UNIQUE, CollegeEnum.EMPLOYES, CollegeEnum.CADRES)
                  .tour(1, date)
                  .scrutinPrecedentDate(date)
                  .partielle()
