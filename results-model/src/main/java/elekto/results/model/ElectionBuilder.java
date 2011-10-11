@@ -5,6 +5,7 @@ import static com.google.common.collect.Lists.newArrayList;
 import java.util.Collection;
 import java.util.Date;
 
+import elekto.results.model.College.Denomination;
 import elekto.util.Builder;
 
 public class ElectionBuilder
@@ -70,20 +71,22 @@ public class ElectionBuilder
 
 
     public ElectionBuilder college(
-            final Iterable<String> collegeCategories)
+            final Denomination denomination,
+            final Iterable<College.CollegeEnum> collegeCategories)
     {
         // TODO ? use factory to retrieve the same college, apply this for other class
-        this.college = new College(newArrayList(collegeCategories));
+        this.college = new College(denomination, newArrayList(collegeCategories));
 
         return this;
     }
 
 
     public ElectionBuilder college(
-            final String... colleges)
+            final Denomination denomination,
+            final College.CollegeEnum... colleges)
     {
         // TODO ? use factory to retrieve the same college, apply this for other class
-        this.college = new College(newArrayList(colleges));
+        this.college = new College(denomination, newArrayList(colleges));
 
         return this;
     }

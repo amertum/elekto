@@ -72,8 +72,9 @@ class TrailingCandidatRowValueGetter
         if (row.getCell(4) != null) {
             this.etablissement = row.getCell(4).getStringCellValue();
         }
-        if (row.getCell(5) != null) {
+        if ((row.getCell(5) != null) && !row.getCell(5).getStringCellValue().isEmpty()) {
             final String cellValue = row.getCell(5).getStringCellValue();
+            System.out.println("== " + cellValue);
             this.colleges = Splitter.on(",").trimResults().split(cellValue);
         }
         if (row.getCell(6) != null) {

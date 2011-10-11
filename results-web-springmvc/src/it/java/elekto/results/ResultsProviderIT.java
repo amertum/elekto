@@ -27,11 +27,11 @@ public class ResultsProviderIT {
         final ResultsProviderFactory factory = new ResultsProviderFactory(
                 new OperationLoader(),
                 new CerfaDocumentFactory());
-        final InputSupplier<InputStream> resultsSupplier = newInputStreamSupplier(getResource("results-template-example.xls"));
+        final InputSupplier<InputStream> resultsSupplier = newInputStreamSupplier(getResource("elections-resultats-modele.xls"));
         final ResultsProvider resultsProvider = factory.create(resultsSupplier.getInput());
 
-        resultsProvider.getInputResults();
-        resultsProvider.getOperation();
+        //resultsProvider.getInputResults();
+        //resultsProvider.getOperation();
         final CerfaDocument cerfaDocument = resultsProvider.getCerfaDocument();
 
         final File tmpFile = new File("target/cerfa.pdf");

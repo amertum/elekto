@@ -18,6 +18,8 @@ import elekto.results.cerfa.raw.RawCerfaDocument;
  * Provides elections results as CERFA document with many page if required.
  * <p>
  * This implementation is based on {@link RawCerfaDocument}.
+ * 
+ * TODO rename to MultiCerfaDocument, test too.
  */
 public class CompleteCerfaDocument
         implements CerfaDocument {
